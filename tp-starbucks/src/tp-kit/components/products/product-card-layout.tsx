@@ -44,7 +44,7 @@ export const ProductCardLayout: React.FC<Props> = function (props) {
             <Link href={productUrl}>{props.product.name}</Link>
           </h3>
 
-          <p className="w-[64px] text-right">
+          <p className="w-[4rem] text-right">
             <FormattedPrice price={props.product.price} />
           </p>
         </div>

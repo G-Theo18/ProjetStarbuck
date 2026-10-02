@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
-import { Geist, Geist_Mono, Montserrat, Playfair_Display } from "next/font/google";
+import { Geist, Geist_Mono, Lexend, Montserrat, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
-const geistSans = Geist({
-  variable: "--font-geist-sans",
+const lexendSans = Lexend({
+  variable: "--font-lexend-sans",
   subsets: ["latin"],
 });
 
@@ -35,7 +35,7 @@ export default function RootLayout({
   return (
     <html lang="fr">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} ${montserrat.variable} ${playfair.variable} antialiased`}
+        className={`${lexendSans.variable} ${geistMono.variable} ${montserrat.variable} ${playfair.variable} antialiased`}
       >
         {children}
       </body>

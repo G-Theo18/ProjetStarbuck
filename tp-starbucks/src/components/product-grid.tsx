@@ -8,7 +8,7 @@ type Props = {
 
 export function ProductGrid({ products }: Props) {
     return (
-        <ul className="grid grid-cols-5 gap-x-5 gap-y-8">
+        <ul className="grid grid-cols-5 gap-x-30 gap-y-8">
             {products.map((product) => (
                 <li key={product.id}>
                     <ProductCardLayout
