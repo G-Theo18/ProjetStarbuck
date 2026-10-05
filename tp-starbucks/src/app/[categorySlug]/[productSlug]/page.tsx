@@ -4,14 +4,23 @@ import { getCategoryFromSlug, getProductFromSlug } from "@/lib/queries";
 
 // Components
 import { SectionContainer } from "@/tp-kit/components/section-container";
-import { BreadCrumbs }      from "@/tp-kit/components/breadcrumbs";
-import { ProductRating }    from "@/tp-kit/components/products/product-rating";
-import { Button }           from "@/tp-kit/components/button";
-import { ProductGrid }      from "@/components/product-grid";
+import { BreadCrumbs } from "@/tp-kit/components/breadcrumbs";
+import { ProductRating } from "@/tp-kit/components/products/product-rating";
+import { Button } from "@/tp-kit/components/button";
+import { ProductGrid } from "@/components/product-grid";
+import { ProductAttribute, ProductAttributesTable } from "@/components/ProductAttributesTable";
 
 type PageProps = {
     params: Promise<{ categorySlug: string; productSlug: string }>;
 };
+
+const ATTRIBUTES: ProductAttribute[] = [
+    { label: "Intensité", rating: 3 },
+    { label: "Volupté", rating: 2 },
+    { label: "Amertume", rating: 1 },
+    { label: "Onctuosité", rating: 4 },
+    { label: "Instagramabilité", rating: 5 },
+];
 
 export default async function Page({ params }: PageProps) {
     const { categorySlug, productSlug } = await params;
@@ -69,6 +78,12 @@ export default async function Page({ params }: PageProps) {
                                 Ajouter au panier
                             </Button>
                         </div>
+
+                        <SectionContainer>
+                            <div className="max-w-4xl mx-auto">
+                                <ProductAttributesTable attributes={ATTRIBUTES} />
+                            </div>
+                        </SectionContainer>
                     </div>
                 </div>
             </SectionContainer>
