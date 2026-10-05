@@ -2,6 +2,9 @@ import type { Metadata } from "next";
 import { Geist, Geist_Mono, Lexend, Montserrat, Playfair_Display } from "next/font/google";
 import "./globals.css";
 
+import { MenuBar }    from "@/tp-kit/components/menu-bar";
+import { Footer }     from "@/tp-kit/components/footer";
+
 const lexendSans = Lexend({
   variable: "--font-lexend-sans",
   subsets: ["latin"],
@@ -37,7 +40,9 @@ export default function RootLayout({
       <body
         className={`${lexendSans.variable} ${geistMono.variable} ${montserrat.variable} ${playfair.variable} antialiased`}
       >
+        <MenuBar />
         {children}
+        <Footer />
       </body>
     </html>
   );
