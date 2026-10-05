@@ -11,6 +11,7 @@
     --font-playfair: var(--font-playfair-loaded), serif;
 
     --color-brand: #00704a;
+    --color-brand-dark: #1e3932;
     --color-coffee-50: #faf6f0;
 
     --color-sidebar-ring: var(--sidebar-ring);
@@ -132,4 +133,10 @@
   html {
     @apply font-sans;
     }
+}
+
+@layer components {
+  .link {
+    @apply cursor-pointer transition-colors hover:text-brand active:text-brand-dark;
+  }
 }
