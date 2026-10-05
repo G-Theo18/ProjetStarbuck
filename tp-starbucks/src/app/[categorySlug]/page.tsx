@@ -4,7 +4,7 @@ import { SectionContainer } from "@/tp-kit/components/section-container";
 import { BreadCrumbs } from "@/tp-kit/components/breadcrumbs";
 import { ProductGrid } from "@/components/product-grid";
 
-export default async function Page({params}: {
+export default async function Page({ params }: {
     params: Promise<{ categorySlug: string }>;
 }) {
     const { categorySlug } = await params;

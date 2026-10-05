@@ -4,11 +4,15 @@ import { ProductData } from "@/tp-kit/types";
 
 type Props = {
     products: ProductData[];
+    className?: string;
 };
 
-export function ProductGrid({ products }: Props) {
+export function ProductGrid({
+    products,
+    className = "grid grid-cols-4 gap-x-30 gap-y-8 p-20",
+}: Props) {
     return (
-        <ul className="grid grid-cols-4 gap-x-30 gap-y-8 p-20">
+        <ul className={className}>
             {products.map((product) => (
                 <li key={product.id}>
                     <ProductCardLayout
