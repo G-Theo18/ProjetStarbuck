@@ -4,9 +4,23 @@ import { SectionContainer } from "@/tp-kit/components/section-container";
 import { BreadCrumbs } from "@/tp-kit/components/breadcrumbs";
 import { ProductGrid } from "@/components/product-grid";
 
-export default async function Page({ params }: {
+import type { Metadata } from "next";
+
+type PageProps = {
     params: Promise<{ categorySlug: string }>;
-}) {
+};
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+    const { categorySlug } = await params;
+    const category = await getCategoryFromSlug(categorySlug);
+
+    return {
+        title: category.name,
+        description: `Trouvez votre inspiration avec un vaste choix de boissons Starbucks parmi nos produits ${category.name}`,
+    };
+}
+
+export default async function Page({ params }: PageProps) {
     const { categorySlug } = await params;
     const category = await getCategoryFromSlug(categorySlug);
 
