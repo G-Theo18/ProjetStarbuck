@@ -10,9 +10,21 @@ import { Button } from "@/tp-kit/components/button";
 import { ProductGrid } from "@/components/product-grid";
 import { ProductAttribute, ProductAttributesTable } from "@/components/ProductAttributesTable";
 
+import type { Metadata } from "next";
+
 type PageProps = {
     params: Promise<{ categorySlug: string; productSlug: string }>;
 };
+
+export async function generateMetadata({ params }: PageProps): Promise<Metadata> {
+    const { categorySlug, productSlug } = await params;
+    const product = await getProductFromSlug(categorySlug, productSlug);
+
+    return {
+        title: product.name,
+        description: product.desc?.trim() || "Succombez pour notre ${product.name} et commandez-le sur notre site !",
+    };
+}
 
 const ATTRIBUTES: ProductAttribute[] = [
     { label: "Intensité", rating: 3 },
