@@ -6,7 +6,7 @@ import { StarbucksLogo } from "@/tp-kit/components/starbucks-logo";
  */
 export function Footer() {
   return (
-    <footer className="bg-brand-600 pb-25 text-white relative overflow-hidden">
+    <footer className="relative overflow-hidden bg-brand pb-25 text-white">
       <div className="text-center lg:text-left text-xl lg:text-3xl uppercase font-bold tracking-widest container mx-auto p-8">
         Starbucks
       </div>
