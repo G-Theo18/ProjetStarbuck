@@ -6,6 +6,13 @@ import { BreadCrumbs }          from "@/tp-kit/components/breadcrumbs";
 import { ProductGrid }          from "@/components/product-grid";
 import Link                     from "next/link";
 
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+    title: "Page d’accueil - Starbucks",
+    description: "Commandez de délicieuses boissons préparées avec soin par nos baristas",
+};
+
 export default function Page() {
     const categories = getProductCategories();
 
