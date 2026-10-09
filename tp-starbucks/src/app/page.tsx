@@ -1,21 +1,16 @@
-import getProductCategories from "@/lib/queries";
+"use client";
+
+import { useState } from "react";
+import Link from "next/link";
 
 // Components
-import { SectionContainer }     from "@/tp-kit/components/section-container";
-import { BreadCrumbs }          from "@/tp-kit/components/breadcrumbs";
-import { ProductGrid }          from "@/components/product-grid";
-import Link                     from "next/link";
-
-import { Metadata } from "next";
-
-export const metadata: Metadata = {
-    title: "Page d’accueil - Starbucks",
-    description: "Commandez de délicieuses boissons préparées avec soin par nos baristas",
-};
+import { SectionContainer } from "@/tp-kit/components/section-container";
+import { BreadCrumbs } from "@/tp-kit/components/breadcrumbs";
+import { ProductGrid } from "@/components/product-grid";
+import { ProductFilters } from "@/components/product-filters";
+import { ProductListWithFilters } from "@/components/product-list-with-filter";
 
 export default function Page() {
-    const categories = getProductCategories();
-
     return (
         <main>
             <SectionContainer>
@@ -25,17 +20,9 @@ export default function Page() {
                 />
             </SectionContainer>
 
-            {categories.map((category) => (
-                <SectionContainer key={category.id} id={category.slug}>
-                    <h2 className="text-lg font-sans font-bold mb-6">
-                        <Link href={`/${category.slug}`} className="link">
-                            {category.name} ({category.products.length})
-                        </Link>
-                    </h2>
-
-                    <ProductGrid products={category.products} />
-                </SectionContainer>
-            ))}
+            <SectionContainer>
+                <ProductListWithFilters />
+            </SectionContainer>
         </main>
     );
 }
