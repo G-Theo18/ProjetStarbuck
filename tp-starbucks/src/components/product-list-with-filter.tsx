@@ -1,6 +1,6 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useMemo } from "react";
 import Link from "next/link";
 
 import { ProductFilters } from "./product-filters";
@@ -15,21 +15,25 @@ export function ProductListWithFilters() {
         categoriesSlug: [],
     });
 
-    const search = filters.search?.toLowerCase();
+    const filteredCategories = useMemo(() => {
+        const search = filters.search?.trim().toLowerCase();
 
-    const filteredCategories = categories
-        .filter(
-            (c) =>
-                filters.categoriesSlug.length === 0 ||
-                filters.categoriesSlug.includes(c.slug)
-        )
-        .map((c) => ({
-            ...c,
-            products: c.products.filter(
-                (p) => !search || p.name.toLowerCase().includes(search)
-            ),
-        }))
-        .filter((c) => c.products.length > 0);
+        return categories
+            .filter(
+                (category) =>
+                    filters.categoriesSlug.length === 0 ||
+                    filters.categoriesSlug.includes(category.slug)
+            )
+            .map((category) => ({
+                ...category,
+                products: category.products.filter(
+                    (product) =>
+                        !search ||
+                        product.name.toLowerCase().includes(search)
+                ),
+            }))
+            .filter((category) => category.products.length > 0);
+    }, [categories, filters]);
 
     return (
         <div className="flex flex-col items-start gap-8 md:flex-row">
