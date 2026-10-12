@@ -44,3 +44,18 @@ export type OrderLine = {
 }
 
 export type OrderTableRowData = Omit<OrderData, 'lines'>;
+
+
+export type ProductFiltersResult = {
+  categoriesSlug: string[];
+  search?: string;
+};
+
+export type ProductLineData = {
+  product: ProductData;
+  qty: number;
+};
+
+export type CartData = {
+  lines: ProductLineData[];
+};
