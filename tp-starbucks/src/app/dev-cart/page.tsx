@@ -6,6 +6,7 @@ import { SectionContainer } from "@/tp-kit/components/section-container";
 import { PRODUCTS_CATEGORY_DATA } from "@/tp-kit/data/products-category.data";
 
 import Cart from "@/components/cart/cart";
+import CartCounter from "@/components/cart/cart-counter";
 import { addLine } from "@/hooks/use-cart";
 
 const products = PRODUCTS_CATEGORY_DATA[0].products;
@@ -38,7 +39,8 @@ export default function DevCartPage() {
             </section>
 
             {/* Panier Zustand */}
-            <section className="w-full lg:w-1/3">
+            <section className="w-full lg:w-1/3 flex flex-col gap-4">
+                <CartCounter />
                 <Cart />
             </section>
         </SectionContainer>

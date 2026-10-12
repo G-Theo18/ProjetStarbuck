@@ -2,10 +2,12 @@
 
 import type { ButtonHTMLAttributes } from "react";
 import { ShoppingCart, X } from "@phosphor-icons/react/dist/ssr";
-
+import { useCart } from "@/hooks/use-cart";
 import { Popover } from "@/tp-kit/components/popover";
 
 export function CartButton() {
+    const lines = useCart((state) => state.lines);
+    
     return (
         <Popover
             align="end"
@@ -17,7 +19,7 @@ export function CartButton() {
                     className="flex items-center gap-2 font-sans cursor-pointer"
                 >
                     {state.open ? <X size={24} /> : <ShoppingCart size={24} />}
-                    <span>0</span>
+                    <span>{lines.length}</span>
                 </button>
             )}
         >
