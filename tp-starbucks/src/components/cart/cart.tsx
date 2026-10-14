@@ -5,7 +5,7 @@ import { FormattedPrice } from "@/tp-kit/components/data-display/formatted-price
 import { ProductCartLine } from "@/tp-kit/components/products/product-cart-line";
 import { Button } from "@/tp-kit/components/button";
 
-import { useCart, removeLine, clearCart, updateLine } from "@/hooks/use-cart";
+import { useCart, removeLine, updateLine } from "@/hooks/use-cart";
 
 export default function Cart() {
     const lines = useCart((state) => state.lines);
@@ -72,17 +72,6 @@ export default function Cart() {
                     Commander
                 </Button>
             </div>
-
-            {/* Vider le panier */}
-            <Button
-                variant="outline"
-                fullWidth
-                className="font-sans font-semibold"
-                onClick={clearCart}
-                disabled={lines.length === 0}
-            >
-                Vider le panier
-            </Button>
         </div>
     );
 }

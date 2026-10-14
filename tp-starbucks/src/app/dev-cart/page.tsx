@@ -7,11 +7,13 @@ import { PRODUCTS_CATEGORY_DATA } from "@/tp-kit/data/products-category.data";
 
 import Cart from "@/components/cart/cart";
 import CartCounter from "@/components/cart/cart-counter";
-import { addLine } from "@/hooks/use-cart";
+import { useCart, addLine, clearCart } from "@/hooks/use-cart";
 
 const products = PRODUCTS_CATEGORY_DATA[0].products;
 
 export default function DevCartPage() {
+    const isEmpty = useCart((state) => state.lines.length === 0);
+
     return (
         <SectionContainer
             className="py-36"
@@ -42,6 +44,16 @@ export default function DevCartPage() {
             <section className="w-full lg:w-1/3 flex flex-col gap-4">
                 <CartCounter />
                 <Cart />
+                {/* Vider le panier */}
+                <Button
+                    variant="outline"
+                    fullWidth
+                    className="font-sans font-semibold"
+                    onClick={clearCart}
+                    disabled={isEmpty}
+                >
+                    Vider le panier
+                </Button>
             </section>
         </SectionContainer>
     );
