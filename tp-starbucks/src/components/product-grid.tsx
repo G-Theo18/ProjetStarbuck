@@ -1,9 +1,7 @@
-"use client";
-
 import { Button } from "@/tp-kit/components/button";
 import { ProductCardLayout } from "@/tp-kit/components/products/product-card-layout";
 import type { ProductData } from "@/tp-kit/types";
-import { addLine } from "@/hooks/use-cart";
+import { AddToCartButton } from "./add-to-cart-button/add-to-cart-button";
 
 type Props = {
     products: ProductData[];
@@ -22,15 +20,7 @@ export function ProductGrid({
                         product={product}
                         className="font-montserrat text-sm font-semibold"
                         button={
-                            <Button
-                                variant="ghost"
-                                size="sm"
-                                fullWidth
-                                className="font-sans"
-                                onClick={() => addLine(product)}
-                            >
-                                Ajouter au panier
-                            </Button>
+                            <AddToCartButton product={product} />
                         }
                     />
                 </li>

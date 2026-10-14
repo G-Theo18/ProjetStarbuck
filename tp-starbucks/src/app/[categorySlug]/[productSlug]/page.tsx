@@ -9,6 +9,7 @@ import { ProductRating } from "@/tp-kit/components/products/product-rating";
 import { Button } from "@/tp-kit/components/button";
 import { ProductGrid } from "@/components/product-grid";
 import { ProductAttribute, ProductAttributesTable } from "@/components/ProductAttributesTable";
+import { AddToCartButton } from "@/components/add-to-cart-button/add-to-cart-button";
 
 import type { Metadata } from "next";
 
@@ -82,13 +83,7 @@ export default async function Page({ params }: PageProps) {
                             <p className="font-sans font-semibold">
                                 {product.price.toFixed(2)} €
                             </p>
-                            <Button
-                                variant="primary"
-                                size="sm"
-                                className="font-sans"
-                            >
-                                Ajouter au panier
-                            </Button>
+                            <AddToCartButton product={product} variant="primary" fullWidth={false}/>
                         </div>
 
                         <SectionContainer>
