@@ -4,7 +4,7 @@ import { Heading } from "@/tp-kit/components/heading";
 import { useCart } from "@/hooks/use-cart";
 
 export default function CartCounter() {
-    const lines = useCart((state) => state.lines);
+    const count = useCart((state) => state.lines.length);
 
     return (
         <Heading
@@ -13,7 +13,7 @@ export default function CartCounter() {
             variant="black"
             className="font-montserrat font-bold"
         >
-            Nombre de lignes : {lines.length}
+            Nombre de lignes : {count}
         </Heading>
     );
 }

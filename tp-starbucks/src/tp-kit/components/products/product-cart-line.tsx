@@ -116,7 +116,7 @@ export const ProductCartLine: React.FC<Props> = function ({
             value={q}
             onChange={handleChange}
             onBlur={handleBlur}
-            className="w-full border-none bg-transparent text-center outline-none"
+            className="qty-input w-full border-none bg-transparent text-center outline-none"
             min={MIN}
             step={1}
           />
@@ -138,6 +138,17 @@ export const ProductCartLine: React.FC<Props> = function ({
           </p>
         )}
       </div>
+
+      {/* Masque les flèches de l'input de quantité */}
+      <style jsx>
+        {`
+          .qty-input::-webkit-inner-spin-button,
+          .qty-input::-webkit-outer-spin-button {
+            -webkit-appearance: none;
+            margin: 0;
+          }
+        `}
+      </style>
     </div>
   );
 };
